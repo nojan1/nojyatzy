@@ -18,7 +18,7 @@
 void saveHighscore(char name[], int score){
   int numPosts,i;
   struct highscorePost post;
-  FILE *outputfile = fopen("highscore.bin", "rb+");
+  FILE *outputfile = fopen(HIGHSCOREPATH, "rb+");
 
   //Assign the player info to a new struct post
   for(i = 0;i < 51; i++){
@@ -80,7 +80,7 @@ void printHighscore(){
   int numPosts,i;
   char whatToDo = 's';
   struct highscorePost *posts;
-  FILE *inputfile = fopen("highscore.bin", "rb");
+  FILE *inputfile = fopen(HIGHSCOREPATH, "rb");
   
   if(inputfile == NULL){
     printf("Couldn't read the highscore file... Is there any highscore to read?\n");
