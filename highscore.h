@@ -9,7 +9,7 @@
 #ifndef _HIGHSCORE
 #define _HIGHSCORE
 
-#define HIGHSCOREPATH highscore.bin
+#define HIGHSCOREPATH "highscore.bin"
 
 struct highscorePost{
   char playername[51];
