@@ -9,6 +9,9 @@ $(PROG): $(OBJ)
 
 $(OBJ): $(SRC)
 
+install: all
+	@install -Dm755 ${PROG} ${DESTDIR}${PREFIX}/bin/${PROG}
+
 clean:
 	rm $(PROG)
 

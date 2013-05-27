@@ -6,8 +6,7 @@
 
 */
 
-//#define _OS windows
-#define _OS linux
+//#define _BUILD_WINDOWS
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,7 +17,7 @@
 
 #pragma warning(disable:4996)
 
-#if _OS == windows
+#ifdef _BUILD_WINDOWS
 #include <windows.h>
 #endif
 
@@ -37,7 +36,7 @@ void printMenu(){
 
 //if windows use the cls command, otherwise use escape codes
 void clearScreen(){
-#if _OS == windows
+#ifdef _BUILD_WINDOWS
   system("cls");
 #else
   printf("\033[2J");
@@ -48,7 +47,7 @@ void clearScreen(){
 //0:Black, 1:Red, 2:Green, 3:Yellow, 4:Blue, 5:Magenta, 6:Cyan, 7:White
 //Windows uses a specific function for this, if not windows use bash escape codes
 void setColor(enum Colors color, enum Colors background){
-#if _OS == windows
+#ifdef _BUILD_WINDOWS
   int windowsColors[] = {0, 4, 2, 6, 1, 5, 3, 15};
   HANDLE stdHandle = GetStdHandle(STD_OUTPUT_HANDLE);
   
@@ -178,7 +177,7 @@ int askHighscore(){
 
 //Function to reset windows terminal color
 void cleanupUi(){
-#if _OS == windows
+#ifdef _BUILD_WINDOWS
   system("color");
 #else
   return;
