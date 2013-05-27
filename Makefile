@@ -5,7 +5,7 @@ PROG = nojyatzy
 CC = gcc
 
 $(PROG): $(OBJ)
-	$(CC) $(OBJ) -o $(PROG) -DHIGHSCOREPATH=$HIGHSCOREPATH
+	$(CC) $(OBJ) -o $(PROG) -DHIGHSCOREPATH=${HIGHSCOREPATH}
 
 $(OBJ): $(SRC)
 

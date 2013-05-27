@@ -32,7 +32,7 @@ build() {
 
     rm -rf "$srcdir/$_gitname-build"
     git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-    touch highscore.bin
+    echo "" > highscore.bin
 }
 
 package() {
