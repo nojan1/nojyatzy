@@ -32,6 +32,8 @@ build() {
 
     rm -rf "$srcdir/$_gitname-build"
     git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+
+    cd "$srcdir/$_gitname-build"
     echo "" > highscore.bin
 }
 
