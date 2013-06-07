@@ -21,12 +21,12 @@ void createPlayers(struct player players[]){
 
   //loop until a correct number of players have been entered
   do{
-    numplayers = readInt("Ange antalet spelare (2-6): ");
+    numplayers = readInt("Enter the number of players (2-6): ");
   }while(numplayers < 2 || numplayers > 6);
 
   for(i = 0;i < 6;i++){
     if(i < numplayers){
-      printf("Ange namn f\x94r spelare %i: ", i+1);
+      printf("Enter name for player %i: ", i+1);
       fgets(players[i].playername, 50, stdin);
 
       //strip newline character left behind by fgets
