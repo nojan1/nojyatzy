@@ -1,46 +1,36 @@
 # Maintainer: Niklas Hedlund <nojan1989@gmail.com>
 pkgname=nojyatzy-git
-pkgver=20130527
+pkgver=10.5aa12cd
 pkgrel=1
 pkgdesc="Simple console based yatzy"
 url="http://github.com/nojan1/nojyatzy"
 arch=('x86_64' 'i686')
 license=('GPLv3')
-depends=('php' 'mysql')
 optdepends=()
-makedepends=("git")
+makedepends=("gcc")
+source=('git://github.com/nojan1/nojyatzy.git')
+md5sums=('SKIP')
 
-_gitroot='git://github.com/nojan1/nojyatzy.git'
 _gitname='nojyatzy'
 
+pkgver() {
+  cd $_gitname
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
 
 build() {
-  cd "${srcdir}"
-  msg "Connecting to GIT server...."
-
-   if [[ -d "$_gitname" ]]
-   then
-	cd "$_gitname"
-	git pull origin
-	msg "The local files are updated."
-   else
-	git clone "$_gitroot" "$_gitname"
-   fi
-
-    msg "GIT checkout done or server timeout"
-    msg "Starting build..."
-
-    rm -rf "$srcdir/$_gitname-build"
-    git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-
-    cd "$srcdir/$_gitname-build"
-    echo "" > highscore.bin
+  cd "$srcdir/$_gitname"
+  make
 }
 
 package() {
-  cd "${srcdir}/$_gitname-build"
-  make DESTDIR="${pkgdir}" PREFIX="/usr" HIGHSCOREPATH="/usr/share/$_gitname/highscore.bin" install
+  cd "$srcdir/$_gitname"
+  make DESTDIR="$pkgdir" PREFIX="/usr" HIGHSCOREPATH="/usr/share/$_gitname/highscore.bin" install
  
-  mkdir -p "${pkgdir}/usr/share/$_gitname/" 
-  install -m666 "highscore.bin" "${pkgdir}/usr/share/$_gitname/highscore.bin"
+  mkdir -p "$pkgdir/usr/share/$_gitname/" 
+  #echo "" > "$pkgdir/usr/share/$_gitname/highscore.bin"
+  #chmod 666 "$pkgdir/usr/share/$_gitname/highscore.bin"
+  echo "" > highscore.bin
+  install -m666 highscore.bin "$pkgdir/usr/share/$_gitname/highscore.bin"
+  rm highscore.bin
 }
