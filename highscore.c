@@ -126,7 +126,7 @@ void printHighscore(){
 	      printf("%s\t%i\n", posts[i].playername, posts[i].score);		  
       }
 
-      printf("\nAnge q f\x94r att \x86terg\x86 till menyn, s f\x94r att sortera p\x86 po\x84ng och n f\x94r att sortera p\x86 namn: ");
+      printf("\nEnter q to return to menu, s to sort on score and n to sort on name: ");
       scanf(" %c", &whatToDo);
     }while(whatToDo != 'q');
 

@@ -52,7 +52,7 @@ int selectReroll(int dices[]){
   temp[1] = '\0';
 
   setColor(GREEN, BLACK);
-  printf("Ange t\x84rningar att sl\x86 om (exempel: 1 3 5)\nF\x94r att inte sl\x86 om alls ange 0\nAnge: ");
+  printf("Enter dices to re roll (example: 1 3 5)\nTo do no re rolls at all enter 0\nInput: ");
 
   //Read the users input as a character string
   fgets(row, 80, stdin);

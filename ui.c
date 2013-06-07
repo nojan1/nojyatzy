@@ -26,11 +26,11 @@ void printMenu(){
   printf("|======================|\n");
   printf("|       nojYatzy       |\n");
   printf("|======================|\n");
-  printf("|     Huvud meny       |\n");
+  printf("|     Main menu        |\n");
   printf("|----------------------|\n");
-  printf("|  1: Spela            |\n");
-  printf("|  2: Visa highscore   |\n");
-  printf("|  3: Avsluta spelet   |\n");
+  printf("|  1: Play             |\n");
+  printf("|  2: Show highscore   |\n");
+  printf("|  3: End game         |\n");
   printf("|======================|\n");
 }
 
@@ -99,19 +99,19 @@ int readInt(char prompt[]){
 //print score board
 void printBoard(struct player player){
   setColor(GREEN, BLACK);
-  printf("%s's po\x84ngtavla:\n", player.playername);
-  printf("---------------------------------\n");
-  printf("| Ettor: %3i | Tretal: %8i |\n", normalizeScore(player.score[0]), normalizeScore(player.score[8]));
-  printf("| Tv\x86or: %3i | Fyrtal: %8i |\n", normalizeScore(player.score[1]), normalizeScore(player.score[9]));
-  printf("| Treor: %3i | Liten Stege: %3i |\n", normalizeScore(player.score[2]), normalizeScore(player.score[10]));
-  printf("| Fyror: %3i | Stor Stege: %4i |\n", normalizeScore(player.score[3]), normalizeScore(player.score[11]));
-  printf("| Femor: %3i | K\x86k: %11i |\n", normalizeScore(player.score[4]), normalizeScore(player.score[12]));
-  printf("| Sexor: %3i | Chans: %9i |\n", normalizeScore(player.score[5]), normalizeScore(player.score[13]));
-  printf("| 1-Par: %3i | Yatzy: %9i |\n", normalizeScore(player.score[6]), normalizeScore(player.score[14]));
-  printf("| 2-Par: %3i |                  |\n", normalizeScore(player.score[7]));
-  printf("---------------------------------\n");
-  printf("Totalt: %i\n", getTotalScore(player));
-  printf("---------------------------------\n");
+  printf("%s's score board:\n", player.playername);
+  printf("-----------------------------------\n");
+  printf("| One's: %5i | Three O Kind: %2i |\n", normalizeScore(player.score[0]), normalizeScore(player.score[8]));
+  printf("| Two's: %5i | Four O Kind: %3i |\n", normalizeScore(player.score[1]), normalizeScore(player.score[9]));
+  printf("| Three's: %3i | Low Strait: %4i |\n", normalizeScore(player.score[2]), normalizeScore(player.score[10]));
+  printf("| Four's: %4i | High Strait: %3i |\n", normalizeScore(player.score[3]), normalizeScore(player.score[11]));
+  printf("| Fives: %5i | Full House: %4i |\n", normalizeScore(player.score[4]), normalizeScore(player.score[12]));
+  printf("| Sixes: %5i | Chance: %8i |\n", normalizeScore(player.score[5]), normalizeScore(player.score[13]));
+  printf("| 1-Pair: %4i | Yatzy: %9i |\n", normalizeScore(player.score[6]), normalizeScore(player.score[14]));
+  printf("| 2-Pair: %4i |                  |\n", normalizeScore(player.score[7]));
+  printf("-----------------------------------\n");
+  printf("Total: %i\n", getTotalScore(player));
+  printf("-----------------------------------\n");
 }
 
 
@@ -164,14 +164,14 @@ void printWinner(struct player player){
   setColor(GREEN, BLACK);
   printf("===================\n");
 
-  printf("OCH VINNAREN \x84r:\n");
+  printf("And the winner is \x84r:\n");
   printf("%s\n", player.playername);
   printf("===================\n");
 
 }
 
 int askHighscore(){
-  printf("Vill du spara vinnarens resultat till highscore? (y/n).. ");
+  printf("Do you wanna save the winner's result to highscore? (y/n).. ");
   return (getchar() == 'y');
 }
 

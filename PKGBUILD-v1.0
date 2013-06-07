@@ -1,25 +1,22 @@
 # Maintainer: Niklas Hedlund <nojan1989@gmail.com>
-pkgname=nojyatzy-git
-pkgver=10.5aa12cd
+pkgname=nojyatzy
+pkgver=1.0
 pkgrel=1
 pkgdesc="Simple console based yatzy"
 url="http://github.com/nojan1/nojyatzy"
 arch=('x86_64' 'i686')
 license=('GPLv3')
 optdepends=()
+conflicts=('nojyatzy-git')
 makedepends=("gcc")
 source=('git://github.com/nojan1/nojyatzy.git')
 md5sums=('SKIP')
 
 _gitname='nojyatzy'
 
-pkgver() {
-  cd $_gitname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
 build() {
   cd "$srcdir/$_gitname"
+  git checkout v1.0
   make HIGHSCOREPATH="/usr/share/$_gitname/highscore.bin"
 }
 

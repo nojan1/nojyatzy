@@ -33,7 +33,7 @@ void gameLoop(struct player players[]){
       printBoard(players[activePlayer]);
 
       setColor(GREEN, BLACK);
-      printf("\nAntal omslag gjorda: %i\n\n", rerollCount);
+      printf("\nNumber of re rolls: %i\n\n", rerollCount);
       printDices(dices);
 
       //User wants to bail early, not using all rerolls
@@ -67,7 +67,7 @@ void gameLoop(struct player players[]){
 	nextPlayersTurn(players, &activePlayer);
       }while(playerDone(players[activePlayer]));
 
-      printf("\n%s det \x84r din tur, tryck ENTER f\x94r att spela..", players[activePlayer].playername);
+      printf("\n%s it is your turn, press ENTER to play..", players[activePlayer].playername);
       getchar();
     }else{
       break;

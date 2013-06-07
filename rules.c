@@ -128,16 +128,16 @@ int isValidSlot(int slot, int dices[]){
     }
     return 0;
   }
-  return (int)NULL;
+  return 0;
 }
 
 int selectWhereToSave(int dices[], struct player player){
   int slot, selectedSlot, validCounter=0;
   int validSlots[15];
-  char labels[][13] = {"Ettor","Tv\x86or","Treor","Fyror","Femmor","Sexor","1-Par","2-Par","Tretal","Fyrtal","Liten stege", "Stor stege", "K\x86k", "Chans", "Yatzy"};
+  char labels[][15] = {"One's","Two's","Three's","Four's","Five's","Sixes","1-Pair","2-Pair","Three of a kind","Four of a kind","Low Strait", "High Strait", "Full house", "Chance", "Yatzy"};
 
   setColor(GREEN, BLACK);
-  printf("V\x84lj var du vill spara ditt resultat, m\x94jliga resultat \x84r listade nedan\n");
+  printf("Select where to save the result, the possible locations are listed below\n");
 
   for(slot = 0; slot < 15;slot++){
     if(player.score[slot] == -1 && isValidSlot(slot, dices)){
@@ -154,7 +154,7 @@ int selectWhereToSave(int dices[], struct player player){
   }
 
   do{
-    selectedSlot = readInt("\nV\x84lj ett alternativ: ");
+    selectedSlot = readInt("\nSelect an alternative: ");
   }while(selectedSlot <= 0 || !inArray(selectedSlot-1, validSlots, 15));
 
   return selectedSlot-1;
@@ -162,10 +162,10 @@ int selectWhereToSave(int dices[], struct player player){
 
 void eliminateSlot(struct player *player){
   int i, selection, validCounter=0, validSlots[15] = {-1};
-  char labels[][13] = {"Ettor","Tv\x86or","Treor","Fyror","Femmor","Sexor","1-Par","2-Par","Tretal","Fyrtal","Liten stege", "Stor stege", "K\x86k", "Chans", "Yatzy"};
+  char labels[][15] = {"One's","Two's","Three's","Four's","Five's","Sixes","1-Pair","2-Pair","Three of a kind","Four of a kind","Low Strait", "High Strait", "Full house", "Chance", "Yatzy"};
 
   setColor(RED, BLACK);
-  printf("Ditt resultat kan inte sparas n\x86gonstans, ange ett alternativ att stryka:\n");
+  printf("Your result can no be saved anywhere, select a alternative to skip:\n");
 
   for(i = 0;i < 15; i++){
     if(player->score[i] == -1){
@@ -175,7 +175,7 @@ void eliminateSlot(struct player *player){
   }
   
   do{
-    selection = readInt("\nV\x84lj ett alternativ: ");
+    selection = readInt("\nSelect an alternative: ");
   }while(selection <= 0 || !inArray(selection-1, validSlots, 15));
 
   player->score[selection-1] = -2;
